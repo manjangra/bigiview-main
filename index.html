@@ -2,39 +2,615 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>BiGiView - Coming Soon</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>BiGiView • House of Visionary Brands</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
-        body { background: #f8fafc; color: #1e293b; display: flex; justify-content: center; align-items: center; min-height: 100vh; text-align: center; padding: 20px; }
-        .container { background: white; padding: 50px 30px; border-radius: 16px; box-shadow: 0 10px 30px rgba(0,0,0,0.05); max-width: 600px; width: 100%; border-top: 6px solid #166534; }
-        h1 { font-size: 32px; color: #166534; margin-bottom: 10px; font-weight: 800; }
-        h3 { font-size: 18px; color: #64748b; margin-bottom: 30px; font-weight: 400; }
-        .divider { height: 2px; background: #e2e8f0; width: 60%; margin: 0 auto 30px; }
-        .contact-box { text-align: left; background: #f1f5f9; padding: 20px; border-radius: 8px; margin-top: 20px; }
-        .contact-box p { margin: 10px 0; font-size: 15px; color: #334155; display: flex; align-items: center; gap: 10px; }
-        .contact-box b { color: #166534; width: 80px; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            background: #06080c;
+            color: #e0e0e0;
+            line-height: 1.5;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .global-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -2;
+            pointer-events: none;
+            overflow: hidden;
+        }
+
+        .global-bg .orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.12;
+            animation: drift 20s infinite alternate ease-in-out;
+        }
+
+        .global-bg .orb:nth-child(1) { width: 700px; height: 700px; background: #0f4c81; top: -200px; left: -150px; }
+        .global-bg .orb:nth-child(2) { width: 600px; height: 600px; background: #9b2c5b; bottom: -200px; right: -100px; animation-duration: 26s; }
+        .global-bg .orb:nth-child(3) { width: 500px; height: 500px; background: #2d5a27; top: 60%; left: 60%; animation-duration: 24s; }
+        .global-bg .orb:nth-child(4) { width: 400px; height: 400px; background: #5b2d8e; bottom: 20%; left: 15%; animation-duration: 28s; }
+
+        @keyframes drift {
+            0% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(40px, -30px) scale(1.08); }
+            100% { transform: translate(-20px, 25px) scale(0.96); }
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 0;
+        }
+
+        .logo {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #ffffff, #b0d0ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: #b0b0b0;
+            text-decoration: none;
+            font-weight: 500;
+            transition: 0.2s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -4px;
+            width: 0;
+            height: 2px;
+            background: #3b82f6;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            min-height: 85vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .animated-gradient-text {
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 800;
+            letter-spacing: -3px;
+            line-height: 1.1;
+            background: linear-gradient(270deg, #60a5fa, #c084fc, #f472b6, #fbbf24, #4ade80, #60a5fa);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientFlow 8s ease infinite;
+            margin-bottom: 1rem;
+        }
+
+        @keyframes gradientFlow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .hero .subtitle {
+            font-size: 1.4rem;
+            color: #9ca3af;
+            max-width: 650px;
+            margin-bottom: 2rem;
+        }
+
+        .entity-section {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 6rem 2rem;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .entity-bg-vectors {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .vector-icon {
+            position: absolute;
+            font-size: 2.5rem;
+            color: rgba(255,255,255,0.06);
+            animation: floatVector 14s infinite alternate ease-in-out;
+            filter: drop-shadow(0 0 10px rgba(255,255,255,0.1));
+        }
+
+        @keyframes floatVector {
+            0% { transform: translate(0, 0) rotate(0deg); opacity: 0.4; }
+            100% { transform: translate(40px, -40px) rotate(12deg); opacity: 0.8; }
+        }
+
+        .entity-row {
+            display: flex;
+            align-items: center;
+            gap: 4rem;
+            max-width: 1200px;
+            width: 100%;
+            z-index: 2;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .entity-text {
+            flex: 1 1 450px;
+            background: rgba(10, 14, 20, 0.55);
+            backdrop-filter: blur(12px);
+            border-radius: 2.5rem;
+            padding: 2.5rem;
+            border: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .entity-character {
+            flex: 0 0 320px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            animation: characterFloat 5s infinite alternate ease-in-out;
+        }
+
+        @keyframes characterFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-15px); }
+        }
+
+        .entity-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            display: inline-block;
+        }
+
+        .entity-title {
+            font-size: 3rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            margin-bottom: 0.3rem;
+        }
+
+        .entity-tagline {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #a0aec0;
+            margin-bottom: 1.5rem;
+        }
+
+        .entity-desc {
+            font-size: 1.1rem;
+            color: #cbd5e1;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+
+        .entity-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.7rem;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 0.9rem 2.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+
+        .entity-btn i {
+            transition: transform 0.3s;
+        }
+
+        .entity-btn:hover {
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.4);
+        }
+
+        .entity-btn:hover i {
+            transform: translateX(5px);
+        }
+
+        /* Entity accent overrides */
+        .entity-360 .entity-icon, .entity-360 .entity-btn { color: #38bdf8; border-color: #38bdf8; }
+        .entity-mj .entity-icon, .entity-mj .entity-btn { color: #f472b6; border-color: #f472b6; }
+        .entity-bness .entity-icon, .entity-bness .entity-btn { color: #fbbf24; border-color: #fbbf24; }
+        .entity-bpv .entity-icon, .entity-bpv .entity-btn { color: #c084fc; border-color: #c084fc; }
+        .entity-weddx .entity-icon, .entity-weddx .entity-btn { color: #4ade80; border-color: #4ade80; }
+        .entity-ent .entity-icon, .entity-ent .entity-btn { color: #f97316; border-color: #f97316; }
+
+        /* team section */
+        .team-section {
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(20,30,45,0.3) 50%, rgba(0,0,0,0) 100%);
+        }
+
+        .team-heading {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 2rem;
+            letter-spacing: -1px;
+        }
+
+        .creative-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 3rem;
+            margin: 3rem 0;
+        }
+
+        .creative-card {
+            background: rgba(255,255,255,0.03);
+            backdrop-filter: blur(8px);
+            padding: 2rem;
+            border-radius: 2rem;
+            max-width: 280px;
+            border: 1px solid rgba(255,255,255,0.06);
+            transition: 0.3s;
+        }
+
+        .creative-card:hover {
+            background: rgba(255,255,255,0.08);
+            transform: translateY(-5px);
+        }
+
+        .creative-card i {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #60a5fa;
+        }
+
+        .creative-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .big-statement {
+            font-size: 2rem;
+            font-weight: 500;
+            max-width: 800px;
+            margin: 3rem auto;
+            line-height: 1.5;
+            color: #d1d5db;
+        }
+
+        .big-statement span {
+            background: linear-gradient(135deg, #f472b6, #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
+        }
+
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(255,255,255,0.06);
+            color: #6b7280;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 768px) {
+            .entity-row {
+                flex-direction: column;
+                gap: 2rem;
+            }
+            .entity-character {
+                flex: 0 0 auto;
+                width: 220px;
+            }
+        }
     </style>
 </head>
 <body>
+    <div class="global-bg">
+        <div class="orb"></div><div class="orb"></div><div class="orb"></div><div class="orb"></div>
+    </div>
 
     <div class="container">
-        <h1>BiGiView</h1>
-        <h3>Website is Under Construction 🚧</h3>
-        
-        <div class="divider"></div>
-        
-        <p style="color: #475569; font-size: 15px; margin-bottom: 20px;">
-            We are working hard to bring you something amazing. In the meantime, you can reach out to us using the details below:
-        </p>
+        <nav>
+            <div class="logo">BiGiView</div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#ventures">Ventures</a>
+                <a href="#creativity">Vision</a>
+            </div>
+        </nav>
 
-        <div class="contact-box">
-            <p><b>Phone:</b> +91-999 666 96 91 <!-- यहाँ अपना नंबर डालें --></p>
-            <p><b>Email:</b> contact@bigiview.com <!-- यहाँ अपना ईमेल डालें --></p>
-            <p><b>Address:</b> Uklana, Hisar, Haryana, India</p>
+        <div class="hero">
+            <h1 class="animated-gradient-text">BiGiView</h1>
+            <p class="subtitle">A constellation of future‑ready brands — immersive experiences, music, e-commerce & storytelling.</p>
         </div>
     </div>
 
+    <!-- BiGiView 360 -->
+    <div id="ventures" class="entity-section entity-360">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-vr-cardboard vector-icon" style="top:10%;left:8%;font-size:3rem;"></i>
+            <i class="fas fa-street-view vector-icon" style="top:75%;left:85%;font-size:2.5rem;animation-delay:1.5s;"></i>
+            <i class="fas fa-camera-retro vector-icon" style="top:30%;left:75%;font-size:2rem;animation-delay:3s;"></i>
+            <i class="fas fa-globe-americas vector-icon" style="top:80%;left:15%;font-size:2.2rem;animation-delay:0.8s;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-vr-cardboard"></i></div>
+                <h2 class="entity-title">BiGiView 360</h2>
+                <p class="entity-tagline">"Big Eye on Every Angle"</p>
+                <p class="entity-desc">Immersive 360° virtual tours for buildings, schools, restaurants & hotels. We publish on Google Maps & VR platforms. Wedding & event shoots in full 360 — relive every moment from any angle.</p>
+                <a href="#" class="entity-btn">Explore 360 Tours <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="280" height="280" viewBox="0 0 280 280" fill="none">
+                    <circle cx="140" cy="140" r="130" fill="url(#grad360)" opacity="0.1"/>
+                    <defs><radialGradient id="grad360"><stop offset="0%" stop-color="#38bdf8"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(40,40)">
+                        <ellipse cx="100" cy="70" rx="45" ry="55" fill="#1e293b" stroke="#38bdf8" stroke-width="3"/>
+                        <rect x="60" y="20" width="80" height="45" rx="20" fill="#0f172a" stroke="#38bdf8" stroke-width="2"/>
+                        <circle cx="85" cy="55" r="10" fill="#38bdf8"/>
+                        <circle cx="115" cy="55" r="10" fill="#38bdf8"/>
+                        <path d="M85 90 L115 90" stroke="#38bdf8" stroke-width="4" stroke-linecap="round"/>
+                        <circle cx="100" cy="110" r="25" fill="none" stroke="#38bdf8" stroke-width="3" stroke-dasharray="10 6"/>
+                        <animateTransform attributeName="transform" type="rotate" values="0 100 70;5 100 70;0 100 70;-5 100 70;0 100 70" dur="4s" repeatCount="indefinite"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- MJ Beat -->
+    <div class="entity-section entity-mj">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-music vector-icon" style="top:15%;left:12%;font-size:3rem;"></i>
+            <i class="fas fa-headphones vector-icon" style="top:70%;left:80%;font-size:2.5rem;animation-delay:1s;"></i>
+            <i class="fas fa-guitar vector-icon" style="top:25%;left:75%;font-size:2rem;animation-delay:0.5s;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-music"></i></div>
+                <h2 class="entity-title">MJ Beat</h2>
+                <p class="entity-tagline">Music production with soul</p>
+                <p class="entity-desc">Original songs, devotional melodies, and bespoke wedding anthems. Same‑day edit music videos — your wedding moments transformed into a cinematic song played at the event.</p>
+                <a href="#" class="entity-btn">Listen to MJ Beat <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="260" height="260" viewBox="0 0 260 260">
+                    <circle cx="130" cy="130" r="120" fill="url(#gradMJ)" opacity="0.15"/>
+                    <defs><radialGradient id="gradMJ"><stop offset="0%" stop-color="#f472b6"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(30,30)">
+                        <ellipse cx="100" cy="80" rx="35" ry="45" fill="#1e293b" stroke="#f472b6" stroke-width="3"/>
+                        <circle cx="80" cy="45" r="12" fill="#f472b6"/>
+                        <circle cx="120" cy="45" r="12" fill="#f472b6"/>
+                        <path d="M70 110 L130 110" stroke="#f472b6" stroke-width="4"/>
+                        <path d="M50 130 Q100 160 150 130" fill="none" stroke="#f472b6" stroke-width="4"/>
+                        <circle cx="60" cy="120" r="8" fill="#f472b6" opacity="0.8">
+                            <animate attributeName="cy" values="120;100;120" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <circle cx="140" cy="120" r="8" fill="#f472b6" opacity="0.8">
+                            <animate attributeName="cy" values="120;100;120" dur="2.2s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- BiGiNess Man -->
+    <div class="entity-section entity-bness">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-store-alt vector-icon" style="top:20%;left:10%;font-size:2.8rem;"></i>
+            <i class="fas fa-truck vector-icon" style="top:70%;left:80%;font-size:2.4rem;"></i>
+            <i class="fas fa-chart-line vector-icon" style="top:45%;left:70%;font-size:2rem;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-store-alt"></i></div>
+                <h2 class="entity-title">BiGiNess Man</h2>
+                <p class="entity-tagline">Offline to online, globally</p>
+                <p class="entity-desc">We onboard your products to Amazon, Flipkart, Ajio, Myntra & more. Complete e‑commerce training and growth strategies — your brand reaches every corner of the world.</p>
+                <a href="#" class="entity-btn">Start Selling <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="260" height="260" viewBox="0 0 260 260">
+                    <circle cx="130" cy="130" r="120" fill="url(#gradBN)" opacity="0.15"/>
+                    <defs><radialGradient id="gradBN"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(40,45)">
+                        <rect x="60" y="10" width="80" height="100" rx="15" fill="#1e293b" stroke="#fbbf24" stroke-width="3"/>
+                        <circle cx="100" cy="50" r="25" fill="#fbbf24" opacity="0.8">
+                            <animate attributeName="r" values="25;28;25" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <path d="M30 140 L170 140" stroke="#fbbf24" stroke-width="4"/>
+                        <rect x="40" y="130" width="20" height="30" fill="#fbbf24" rx="5"/>
+                        <rect x="140" y="130" width="20" height="30" fill="#fbbf24" rx="5"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Big Print View -->
+    <div class="entity-section entity-bpv">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-print vector-icon" style="top:15%;left:80%;font-size:2.6rem;"></i>
+            <i class="fas fa-tshirt vector-icon" style="top:70%;left:10%;font-size:2.8rem;"></i>
+            <i class="fas fa-mug-hot vector-icon" style="top:35%;left:15%;font-size:2rem;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-print"></i></div>
+                <h2 class="entity-title">Big Print View</h2>
+                <p class="entity-tagline">Novelty & custom printing</p>
+                <p class="entity-desc">Personalized mugs, t‑shirts, photo gifts, corporate merchandise. High‑quality printing, fast delivery — we turn your imagination into tangible art.</p>
+                <a href="#" class="entity-btn">Order Prints <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="260" height="260" viewBox="0 0 260 260">
+                    <circle cx="130" cy="130" r="120" fill="url(#gradBPV)" opacity="0.15"/>
+                    <defs><radialGradient id="gradBPV"><stop offset="0%" stop-color="#c084fc"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(50,50)">
+                        <rect x="20" y="30" width="120" height="90" rx="10" fill="#1e293b" stroke="#c084fc" stroke-width="3"/>
+                        <circle cx="80" cy="55" r="30" fill="#c084fc" opacity="0.7">
+                            <animate attributeName="opacity" values="0.7;1;0.7" dur="2s" repeatCount="indefinite"/>
+                        </circle>
+                        <rect x="40" y="100" width="80" height="15" rx="7" fill="#c084fc"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- WeddXpert -->
+    <div class="entity-section entity-weddx">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-camera-retro vector-icon" style="top:15%;left:10%;font-size:3rem;"></i>
+            <i class="fas fa-film vector-icon" style="top:70%;left:80%;font-size:2.5rem;"></i>
+            <i class="fas fa-video vector-icon" style="top:30%;left:75%;font-size:2rem;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-camera-retro"></i></div>
+                <h2 class="entity-title">WeddXpert</h2>
+                <p class="entity-tagline">Cinematic excellence</p>
+                <p class="entity-desc">Professional video & photography for weddings, movies, music videos, podcasts. Cinema cameras, drones, gimbals — every frame crafted to perfection.</p>
+                <a href="#" class="entity-btn">View Portfolio <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="260" height="260" viewBox="0 0 260 260">
+                    <circle cx="130" cy="130" r="120" fill="url(#gradWED)" opacity="0.15"/>
+                    <defs><radialGradient id="gradWED"><stop offset="0%" stop-color="#4ade80"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(40,40)">
+                        <rect x="50" y="30" width="100" height="70" rx="20" fill="#1e293b" stroke="#4ade80" stroke-width="3"/>
+                        <circle cx="100" cy="60" r="30" fill="#4ade80" opacity="0.8">
+                            <animate attributeName="r" values="30;33;30" dur="3s" repeatCount="indefinite"/>
+                        </circle>
+                        <rect x="80" y="20" width="40" height="15" rx="5" fill="#4ade80"/>
+                        <circle cx="100" cy="20" r="5" fill="#4ade80" opacity="0.9">
+                            <animate attributeName="opacity" values="0.9;0.3;0.9" dur="1.5s" repeatCount="indefinite"/>
+                        </circle>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- BiGiView Entertainment -->
+    <div class="entity-section entity-ent">
+        <div class="entity-bg-vectors">
+            <i class="fas fa-clapperboard vector-icon" style="top:20%;left:10%;font-size:2.8rem;"></i>
+            <i class="fas fa-film vector-icon" style="top:60%;left:80%;font-size:2.4rem;"></i>
+            <i class="fas fa-ticket-alt vector-icon" style="top:30%;left:75%;font-size:2rem;"></i>
+        </div>
+        <div class="entity-row">
+            <div class="entity-text">
+                <div class="entity-icon"><i class="fas fa-clapperboard"></i></div>
+                <h2 class="entity-title">BiGiView Entertainment</h2>
+                <p class="entity-tagline">Stories that move the world</p>
+                <p class="entity-desc">Short films, documentaries, biopics, and concept ads. From script to screen, we produce and direct with cinematic vision and emotional depth.</p>
+                <a href="#" class="entity-btn">Discover Films <i class="fas fa-arrow-right"></i></a>
+            </div>
+            <div class="entity-character">
+                <svg width="260" height="260" viewBox="0 0 260 260">
+                    <circle cx="130" cy="130" r="120" fill="url(#gradENT)" opacity="0.15"/>
+                    <defs><radialGradient id="gradENT"><stop offset="0%" stop-color="#f97316"/><stop offset="100%" stop-color="#0f172a"/></radialGradient></defs>
+                    <g transform="translate(45,45)">
+                        <rect x="40" y="20" width="90" height="110" rx="10" fill="#1e293b" stroke="#f97316" stroke-width="3"/>
+                        <polygon points="85,50 115,70 85,90" fill="#f97316" opacity="0.9">
+                            <animate attributeName="opacity" values="0.9;0.5;0.9" dur="2s" repeatCount="indefinite"/>
+                        </polygon>
+                        <rect x="50" y="130" width="70" height="15" rx="5" fill="#f97316"/>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </div>
+
+    <!-- Creativity / Team Section -->
+    <div id="creativity" class="team-section">
+        <h2 class="team-heading">The BiGiView Edge</h2>
+        <div class="creative-grid">
+            <div class="creative-card">
+                <i class="fas fa-lightbulb"></i>
+                <h3>Vision</h3>
+                <p>We don’t just build brands; we craft universes where every pixel, note, and frame tells a powerful story.</p>
+            </div>
+            <div class="creative-card">
+                <i class="fas fa-users"></i>
+                <h3>Team</h3>
+                <p>A collective of dreamers, engineers, artists, and strategists united by a passion to redefine experiences.</p>
+            </div>
+            <div class="creative-card">
+                <i class="fas fa-magic"></i>
+                <h3>Creativity</h3>
+                <p>From 360° immersion to soulful beats, from e‑commerce to cinematic films — creativity is our only constant.</p>
+            </div>
+        </div>
+        <div class="big-statement">
+            <span>"Big eye on every angle"</span> isn't just a tagline — it's how we see the world. <br> Every venture under BiGiView is a lens that magnifies possibility.
+        </div>
+        <a href="#" class="entity-btn" style="margin-top:2rem; border-color:#60a5fa; color:#60a5fa;">Let's create together <i class="fas fa-arrow-right"></i></a>
+    </div>
+
+    <footer>
+        <p>© 2026 BiGiView — House of Visionary Brands. <span style="color:#e0e0e0;">hello@bigiview.com</span> • India</p>
+    </footer>
 </body>
 </html>
